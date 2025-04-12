@@ -1,0 +1,29 @@
+<!-- src/app/user/user.component.html -->
+<h2>User Form</h2>
+<form #userForm="ngForm" (ngSubmit)="onSubmit()">
+  <input type="text" name="name" [(ngModel)]="formData.name" placeholder="Name" required />
+  <input type="email" name="email" [(ngModel)]="formData.email" placeholder="Email" required />
+  <input type="text" name="role" [(ngModel)]="formData.role" placeholder="Role" required />
+  <button type="submit">{{ formData.id ? 'Update' : 'Add' }}</button>
+</form>
+
+<hr />
+
+<h2>User List</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.role }}</td>
+    <td>
+      <button (click)="editUser(user)">Edit</button>
+      <button (click)="deleteUser(user.id)">Delete</button>
+    </td>
+  </tr>
+</table>
